@@ -2,13 +2,11 @@ class Solution {
 public: 
     class DisjSet {
     public:
-        vector<int> rank;
         vector<pair<int, int>> parent;
         int n;
         
         DisjSet(int n){
             this->n = n;
-            this->rank = vector<int>(n+1);
             this->parent = vector<pair<int, int>>(n+1);
             for(int i=0;i<=n;i++){
                 parent[i] = {i, INT_MAX};

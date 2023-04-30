@@ -30,26 +30,22 @@ class Solution {
     public int maxNumEdgesToRemove(int n, int[][] edges) {
         Dsu aliceDsu = new Dsu(n);
         Dsu bobDsu = new Dsu(n);
-        Arrays.sort(edges, new Comparator<int[]>(){
-            @Override
-          public int compare(int[] a, int[] b) {
-            return b[0] - a[0];
-          }
-        });
         int ans = 0;
-        for(int[] edge: edges){
-            if(edge[0] == 3){
+         for(int[] edge: edges){
+             if(edge[0] == 3){
                 boolean isAlice = aliceDsu.union(edge[1], edge[2]);
                 boolean isBob = bobDsu.union(edge[1], edge[2]);
                 if(!isAlice && !isBob){
                     ans++;
                 }
             }
-            else if(edge[0] == 1){
+         }
+        for(int[] edge: edges){
+            if(edge[0] == 1){
                 if(!aliceDsu.union(edge[1], edge[2])){
                     ans++;
                 }
-            } else {
+            } else if((edge[0] == 2)){
                 if(!bobDsu.union(edge[1], edge[2])){
                     ans++;
                 }
